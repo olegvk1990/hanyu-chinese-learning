@@ -1,0 +1,61 @@
+name: Deploy HanYu
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Copy files to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "."
+          target: "/opt/hanyu"
+          overwrite: true
+          rm: false
+
+      - name: Deploy with Docker Compose
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /opt/hanyu
+            
+            # Install Docker if not present
+            if ! command -v docker &> /dev/null; then
+              curl -fsSL https://get.docker.com | sh
+              systemctl enable docker
+              systemctl start docker
+            fi
+            
+            # Install docker-compose plugin if not present
+            if ! docker compose version &> /dev/null; then
+              apt-get update && apt-get install -y docker-compose-plugin
+            fi
+            
+            # Set production env
+            export JWT_SECRET="${{ secrets.JWT_SECRET }}"
+            
+            # Build and deploy
+            docker compose down
+            docker compose build --no-cache
+            docker compose up -d
+            
+            # Run seed (first time or update data)
+            docker compose --profile seed run --rm seed
+            
+            # Cleanup old images
+            docker image prune -f
+            
+            echo "Deploy complete!"
