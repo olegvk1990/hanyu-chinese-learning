@@ -1,0 +1,14 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.theme-toggle {
+  @include touch-target;
+  font-size: 1.25rem;
+  padding: $space-sm;
+  border-radius: $radius-full;
+  transition: opacity $transition-fast;
+
+  &:active {
+    opacity: 0.8;
+  }
+}

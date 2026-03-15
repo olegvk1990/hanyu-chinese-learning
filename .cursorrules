@@ -1,0 +1,26 @@
+# HanYu 汉语学习 - Cursor Rules
+
+## DRY / Переиспользование
+- Перед созданием нового компонента — искать существующий аналог
+- Выносить общую логику в shared/ (хуки, компоненты, утилиты)
+- Один универсальный FlashCard компонент через props вместо дублирования
+- На бэкенде: общие middleware/utils в server/src/middleware/ и server/src/utils/
+
+## Production
+- ВСЕ изменения ТОЛЬКО локально -> git commit/push -> rsync на VPN-сервер
+- ЗАПРЕЩЕНО редактировать файлы напрямую на production сервере
+
+## Данные
+- ЗАПРЕЩЕНО удалять данные из БД без явного запроса пользователя
+- Seed-скрипты работают в режиме append по умолчанию
+
+## Стек
+- Frontend: React 18 + RTK + RTK Query + React Router + SASS
+- Backend: Express + Mongoose + ioredis + JWT
+- БЕЗ тяжелых UI-библиотек (Antd, MUI) — чистые SASS-компоненты
+- Mobile-first: базовые стили для мобильных, расширяй через @media (min-width)
+
+## Детальные правила в .cursor/rules/:
+- frontend.mdc — RTK Query, SASS, mobile-first, темы
+- backend.mdc — Mongoose, ошибки, ответы, Redis
+- workflow.mdc — терминалы, git, синтаксис

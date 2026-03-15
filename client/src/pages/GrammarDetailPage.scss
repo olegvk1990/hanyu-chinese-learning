@@ -1,0 +1,101 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.grammar-detail {
+  @include page-container;
+
+  &--error {
+    @include flex-column;
+    align-items: center;
+    gap: $space-md;
+    padding: $space-xl;
+    color: var(--error);
+
+    a {
+      color: var(--accent);
+    }
+  }
+}
+
+.grammar-detail__container {
+  @include flex-column;
+  gap: $space-xl;
+}
+
+.grammar-detail__back {
+  font-size: $font-sm;
+  color: var(--accent);
+  font-weight: 500;
+  align-self: flex-start;
+}
+
+.grammar-detail__title {
+  font-size: $font-2xl;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+.grammar-detail__section {
+  @include flex-column;
+  gap: $space-md;
+
+  h2 {
+    font-size: $font-lg;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+.grammar-detail__explanation {
+  font-size: $font-base;
+  color: var(--text-primary);
+  line-height: 1.7;
+}
+
+.grammar-detail__pattern {
+  font-size: $font-base;
+  font-family: monospace;
+  padding: $space-md;
+  background: var(--bg-secondary);
+  border-radius: $radius-md;
+  overflow-x: auto;
+  color: var(--text-primary);
+}
+
+.grammar-detail__examples {
+  @include flex-column;
+  gap: $space-md;
+}
+
+.grammar-detail__example {
+  padding: $space-md;
+  background: var(--bg-secondary);
+  border-radius: $radius-md;
+  @include flex-column;
+  gap: $space-xs;
+}
+
+.grammar-detail__example-zh {
+  font-size: $font-xl;
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  color: var(--text-primary);
+}
+
+.grammar-detail__example-pinyin {
+  @include pinyin-text;
+  font-size: $font-sm;
+}
+
+.grammar-detail__example-translation {
+  font-size: $font-base;
+  color: var(--text-secondary);
+}
+
+.grammar-detail__notes {
+  font-size: $font-base;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}

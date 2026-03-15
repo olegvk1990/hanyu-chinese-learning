@@ -1,0 +1,85 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.categories-page {
+  @include page-container;
+
+  &--error {
+    @include flex-center;
+    color: var(--error);
+    padding: $space-xl;
+  }
+}
+
+.categories-page__container {
+  @include flex-column;
+  gap: $space-xl;
+}
+
+.categories-page__section {
+  @include flex-column;
+  gap: $space-md;
+}
+
+.categories-page__section-title {
+  font-size: $font-lg;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-left: $space-xs;
+}
+
+.categories-page__grid {
+  @include grid-categories;
+}
+
+.categories-page__card {
+  @include card;
+  @include flex-column;
+  align-items: flex-start;
+  padding: $space-md;
+  position: relative;
+  overflow: hidden;
+  min-height: 120px;
+  text-decoration: none;
+  color: inherit;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.categories-page__accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent-color, var(--accent));
+}
+
+.categories-page__emoji {
+  font-size: 1.75rem;
+  margin-bottom: $space-xs;
+}
+
+.categories-page__name-zh {
+  font-size: $font-xl;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  line-height: 1.2;
+}
+
+.categories-page__name-ru {
+  font-size: $font-sm;
+  color: var(--text-secondary);
+  margin-top: $space-xs;
+}
+
+.categories-page__badge {
+  @include badge;
+  margin-top: auto;
+  padding-top: $space-sm;
+}

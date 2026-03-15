@@ -1,0 +1,43 @@
+// Spacing
+$space-xs: 4px;
+$space-sm: 8px;
+$space-md: 16px;
+$space-lg: 24px;
+$space-xl: 32px;
+$space-2xl: 48px;
+
+// Breakpoints
+$bp-sm: 375px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+
+// Font sizes
+$font-xs: 0.75rem;
+$font-sm: 0.875rem;
+$font-base: 1rem;
+$font-lg: 1.25rem;
+$font-xl: 1.5rem;
+$font-2xl: 2rem;
+$font-chinese: clamp(3.5rem, 8vw, 5rem);
+$font-pinyin: 1.25rem;
+
+// Border radius
+$radius-sm: 6px;
+$radius-md: 12px;
+$radius-lg: 16px;
+$radius-xl: 24px;
+$radius-full: 9999px;
+
+// Transitions
+$transition-fast: 150ms ease;
+$transition-base: 250ms ease;
+$transition-slow: 400ms ease;
+$transition-flip: 600ms ease;
+
+// Z-index
+$z-nav: 100;
+$z-modal: 200;
+$z-toast: 300;
+
+// Touch
+$touch-min: 44px;

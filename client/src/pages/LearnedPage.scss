@@ -1,0 +1,124 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.learned-page {
+  @include page-container;
+
+  &--error {
+    @include flex-center;
+    color: var(--error);
+    padding: $space-xl;
+  }
+}
+
+.learned-page__container {
+  @include flex-column;
+  gap: $space-md;
+}
+
+.learned-page__filters {
+  @include flex-column;
+  gap: $space-sm;
+}
+
+.learned-page__search {
+  min-height: $touch-min;
+  padding: $space-md !important;
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.learned-page__select {
+  min-height: $touch-min;
+  padding: $space-md !important;
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: $radius-md;
+  font-size: $font-base;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.learned-page__list {
+  @include flex-column;
+  gap: $space-md;
+}
+
+.learned-page__item {
+  @include card;
+  padding: $space-md;
+  @include flex-column;
+  gap: $space-sm;
+}
+
+.learned-page__card {
+  @include flex-column;
+  align-items: flex-start;
+  gap: $space-xs;
+  text-align: left;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.learned-page__chinese {
+  font-size: $font-2xl;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+.learned-page__pinyin {
+  @include pinyin-text;
+}
+
+.learned-page__translation {
+  font-size: $font-base;
+  color: var(--text-secondary);
+}
+
+.learned-page__expand-icon {
+  font-size: $font-xl;
+  color: var(--text-tertiary);
+  margin-top: $space-xs;
+}
+
+.learned-page__examples {
+  padding-top: $space-sm;
+  border-top: 1px solid var(--border);
+  @include flex-column;
+  gap: $space-xs;
+}
+
+.learned-page__example {
+  font-size: $font-sm;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.learned-page__review {
+  @include touch-target(36px);
+  align-self: flex-start;
+  padding: $space-xs $space-md;
+  font-size: $font-sm;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-light);
+  border-radius: $radius-md;
+}
+
+.learned-page__empty {
+  @include flex-center;
+  @include flex-column;
+  gap: $space-md;
+  padding: $space-2xl;
+  color: var(--text-secondary);
+}
+
+.learned-page__link {
+  color: var(--accent);
+  font-weight: 500;
+}

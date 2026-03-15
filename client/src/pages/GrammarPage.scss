@@ -1,0 +1,131 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.grammar-page {
+  @include page-container;
+
+  &--error {
+    @include flex-center;
+    color: var(--error);
+    padding: $space-xl;
+  }
+}
+
+.grammar-page__container {
+  @include flex-column;
+  gap: $space-lg;
+}
+
+.grammar-page__tabs {
+  display: flex;
+  gap: $space-xs;
+  overflow-x: auto;
+  padding-bottom: $space-xs;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+}
+
+.grammar-page__tab {
+  @include touch-target(36px);
+  flex-shrink: 0;
+  padding: $space-sm $space-md;
+  font-size: $font-sm;
+  font-weight: 500;
+  border-radius: $radius-full;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  transition: all $transition-fast;
+
+  &--active {
+    background: var(--accent-light);
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+}
+
+.grammar-page__list {
+  @include flex-column;
+  gap: $space-md;
+}
+
+.grammar-page__item {
+  @include card;
+  overflow: hidden;
+}
+
+.grammar-page__card {
+  @include flex-between;
+  width: 100%;
+  padding: $space-md;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.grammar-page__title {
+  font-size: $font-lg;
+  font-weight: 600;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.grammar-page__expand-icon {
+  font-size: $font-xl;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+.grammar-page__content {
+  padding: 0 $space-md $space-md;
+  @include flex-column;
+  gap: $space-md;
+}
+
+.grammar-page__explanation {
+  font-size: $font-base;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.grammar-page__pattern {
+  font-size: $font-sm;
+  color: var(--text-primary);
+  font-family: monospace;
+  padding: $space-sm;
+  background: var(--bg-secondary);
+  border-radius: $radius-sm;
+}
+
+.grammar-page__examples {
+  @include flex-column;
+  gap: $space-xs;
+
+  strong {
+    font-size: $font-sm;
+    color: var(--text-secondary);
+  }
+}
+
+.grammar-page__example {
+  font-size: $font-sm;
+  color: var(--text-primary);
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+}
+
+.grammar-page__detail-link {
+  font-size: $font-sm;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.grammar-page__empty {
+  @include flex-center;
+  padding: $space-2xl;
+  color: var(--text-secondary);
+}

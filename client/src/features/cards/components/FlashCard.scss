@@ -1,0 +1,253 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.flash-card {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: $space-lg;
+  position: relative;
+
+  &--exiting {
+    pointer-events: none;
+
+    &-left {
+      animation: swipe-out-left $transition-slow ease forwards;
+    }
+
+    &-right {
+      animation: swipe-out-right $transition-slow ease forwards;
+    }
+  }
+
+  &__inner {
+    flex: 1;
+    min-height: 400px;
+    perspective: 1200px;
+    cursor: pointer;
+  }
+
+  &__flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    transform-style: preserve-3d;
+    transition: transform $transition-flip;
+  }
+
+  &__flipper--flipped {
+    transform: rotateY(180deg);
+  }
+
+  &__side {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: $radius-lg;
+    background: var(--bg-card);
+    box-shadow: var(--shadow-md);
+    padding: $space-xl;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &__side--front {
+    transform: rotateY(0deg);
+  }
+
+  &__side--back {
+    transform: rotateY(180deg);
+    justify-content: flex-start;
+    align-items: stretch;
+    overflow-y: auto;
+  }
+
+  &__difficulty {
+    position: absolute;
+    top: $space-md;
+    right: $space-md;
+    @include badge(var(--success-light), var(--success));
+    text-transform: capitalize;
+  }
+
+  &__chinese {
+    font-size: clamp(3.5rem, 8vw, 5rem);
+    font-weight: 400;
+    line-height: 1.2;
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: $space-md;
+  }
+
+  &__pinyin {
+    font-size: $font-pinyin;
+    color: var(--text-pinyin);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-align: center;
+  }
+
+  &__translation {
+    margin-top: $space-md;
+    margin-bottom: $space-lg;
+  }
+
+  &__translation-ru {
+    display: block;
+    font-size: $font-xl;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: $space-xs;
+  }
+
+  &__translation-en {
+    display: block;
+    font-size: $font-base;
+    color: var(--text-secondary);
+  }
+
+  &__grammar {
+    font-size: $font-sm;
+    color: var(--text-secondary);
+    padding: $space-md;
+    background: var(--bg-secondary);
+    border-radius: $radius-md;
+    margin-bottom: $space-lg;
+    line-height: 1.5;
+  }
+
+  &__examples {
+    border-top: 1px solid var(--border-light);
+    padding-top: $space-lg;
+    flex: 1;
+  }
+
+  &__examples-toggle {
+    width: 100%;
+    padding: $space-sm $space-md;
+    font-size: $font-sm;
+    color: var(--accent);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    margin-bottom: $space-md;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__examples-list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-lg;
+  }
+
+  &__example {
+    padding: $space-md;
+    background: var(--bg-secondary);
+    border-radius: $radius-md;
+  }
+
+  &__example-chinese {
+    font-size: $font-lg;
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    color: var(--text-primary);
+    margin-bottom: $space-xs;
+  }
+
+  &__example-pinyin {
+    font-size: $font-sm;
+    color: var(--text-pinyin);
+    margin-bottom: $space-xs;
+  }
+
+  &__example-translation {
+    font-size: $font-sm;
+    color: var(--text-secondary);
+  }
+
+  &__example-translation-en {
+    color: var(--text-tertiary);
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: $space-md;
+    flex-wrap: wrap;
+  }
+
+  &__btn {
+    @include touch-target(44px);
+    flex: 1;
+    min-width: 0;
+    flex-direction: column;
+    display: flex;
+    gap: $space-xs;
+    padding: $space-sm $space-md;
+    border: none;
+    border-radius: $radius-full;
+    font-size: $font-xs;
+    font-weight: 600;
+    transition: transform $transition-fast, opacity $transition-fast;
+    -webkit-tap-highlight-color: transparent;
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    svg {
+      flex-shrink: 0;
+    }
+
+    span {
+      white-space: nowrap;
+    }
+
+    &--dont-know {
+      background: rgba(255, 59, 48, 0.12);
+      color: var(--error);
+    }
+
+    &--learned {
+      background: var(--success-light);
+      color: var(--success);
+    }
+
+    &--know {
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+  }
+}
+
+@keyframes swipe-out-left {
+  to {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+}
+
+@keyframes swipe-out-right {
+  to {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}

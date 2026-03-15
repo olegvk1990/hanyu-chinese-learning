@@ -1,0 +1,99 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.login-page {
+  @include flex-center;
+  min-height: 100dvh;
+  padding: $space-md;
+  background: var(--bg-primary);
+}
+
+.login-page__card {
+  width: 100%;
+  max-width: 400px;
+  padding: $space-xl;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  box-shadow: var(--shadow-md);
+}
+
+.login-page__title {
+  font-size: $font-2xl;
+  font-weight: 600;
+  text-align: center;
+  color: var(--text-primary);
+  margin-bottom: $space-xs;
+}
+
+.login-page__subtitle {
+  font-size: $font-sm;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: $space-lg;
+}
+
+.login-page__form {
+  @include flex-column;
+  gap: $space-md;
+}
+
+.login-page__error {
+  font-size: $font-sm;
+  color: var(--error);
+  padding: $space-sm;
+  background: rgba(255, 59, 48, 0.1);
+  border-radius: $radius-sm;
+}
+
+.login-page__label {
+  @include flex-column;
+  gap: $space-xs;
+}
+
+.login-page__label-text {
+  font-size: $font-sm;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.login-page__input {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border) !important;
+  padding: $space-md !important;
+  min-height: $touch-min;
+  font-size: $font-base;
+}
+
+.login-page__submit {
+  @include touch-target;
+  margin-top: $space-sm;
+  padding: $space-md $space-lg;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  font-size: $font-base;
+  border-radius: $radius-md;
+  transition: background $transition-fast;
+
+  &:hover:not(:disabled) {
+    background: var(--accent-hover);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+.login-page__footer {
+  margin-top: $space-lg;
+  font-size: $font-sm;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.login-page__link {
+  color: var(--accent);
+  font-weight: 500;
+}

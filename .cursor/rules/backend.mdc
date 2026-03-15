@@ -1,0 +1,26 @@
+---
+description: "Backend: Mongoose, ошибки, ответы, Redis кэш"
+globs: ["server/src/**/*.js"]
+alwaysApply: false
+---
+
+# Backend
+
+## Mongoose Models
+- unique: true уже создает индекс — НЕ добавляй index: true к тому же полю
+- Составные индексы через schema.index()
+- Для read-only операций используй .lean()
+
+## Единый формат ответов
+Все HTTP-ответы через utils/response.js:
+{ success: boolean, data?, error?: { message, code } }
+
+## Redis кэширование
+- Кэшировать списки категорий и слов (TTL 1 час)
+- Инвалидировать при seed или изменении данных
+- Ключи: hanyu:categories, hanyu:words:{categorySlug}
+
+## Надежность
+- Централизованная обработка ошибок через middleware/errorHandler.js
+- asyncHandler для всех route handlers
+- JWT auth через middleware/auth.js

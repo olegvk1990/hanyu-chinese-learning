@@ -1,0 +1,33 @@
+---
+description: "Frontend: RTK Query, SASS, mobile-first, темы"
+globs: ["client/src/**/*.jsx", "client/src/**/*.js", "client/src/**/*.scss"]
+alwaysApply: false
+---
+
+# Frontend
+
+## State Management
+- Все состояния в Redux Toolkit (RTK). Локальный state только для UI-мелочей.
+- ТОЛЬКО RTK Query для data fetching.
+
+## API Architecture
+- Единый baseApi в client/src/shared/api/baseApi.js
+- Все фича-API через baseApi.injectEndpoints(). ЗАПРЕЩЕНО создавать отдельный createApi().
+- Токен авторизации ТОЛЬКО из Redux state (getState().auth?.token).
+
+## Структура фича-модуля
+features/{name}/
+  api/{name}Api.js       // injectEndpoints()
+  slices/{name}Slice.js  // Redux slice
+  components/            // React components
+  pages/                 // Page components
+
+## SASS и стили
+- Используй CSS переменные из _themes.scss, НЕ хардкодь цвета
+- Текст: --text-primary/--text-secondary
+- Фон: --bg-primary/--bg-secondary/--bg-card
+- Используй gap вместо margin для списков/сеток
+- Mobile-first: базовые стили для мобильных, расширяй через @media (min-width)
+- Тач-зоны минимум 44x44px
+- Иероглифы на карточках: 64-80px для комфортного переписывания
+- Используй SASS миксины из _mixins.scss

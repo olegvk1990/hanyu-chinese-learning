@@ -1,0 +1,33 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.layout {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.layout__header {
+  @include flex-between;
+  padding: $space-sm $space-md;
+  padding-top: calc(env(safe-area-inset-top, 0px) + $space-sm);
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: $z-nav;
+}
+
+.layout__title {
+  font-size: $font-lg;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.layout__main {
+  flex: 1;
+  padding-bottom: calc(var(--bottom-nav-height) + var(--safe-bottom) + $space-md);
+  overflow-y: auto;
+}

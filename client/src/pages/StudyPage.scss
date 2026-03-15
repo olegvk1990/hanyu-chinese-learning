@@ -1,0 +1,135 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.study-page {
+  @include page-container;
+  @include flex-column;
+  align-items: center;
+  gap: $space-lg;
+
+  &--error,
+  &__empty {
+    @include flex-center;
+    @include flex-column;
+    gap: $space-md;
+    color: var(--text-secondary);
+    padding: $space-xl;
+  }
+
+  &__link {
+    color: var(--accent);
+    font-weight: 500;
+  }
+}
+
+.study-page__header {
+  width: 100%;
+  @include flex-column;
+  gap: $space-md;
+}
+
+.study-page__title {
+  font-size: $font-xl;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+.study-page__filters {
+  display: flex;
+  gap: $space-sm;
+  flex-wrap: wrap;
+}
+
+.study-page__filter {
+  @include touch-target(36px);
+  padding: $space-xs $space-md;
+  font-size: $font-sm;
+  border-radius: $radius-full;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  transition: all $transition-fast;
+
+  &--active {
+    background: var(--accent-light);
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+}
+
+.study-page__counter {
+  font-size: $font-sm;
+  color: var(--text-tertiary);
+}
+
+.study-page__card-wrap {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.study-page__actions {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  justify-content: center;
+}
+
+.study-page__skip {
+  @include touch-target;
+  padding: $space-sm $space-lg;
+  font-size: $font-base;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border);
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.study-page__complete {
+  @include flex-column;
+  align-items: center;
+  gap: $space-lg;
+  padding: $space-xl;
+  text-align: center;
+
+  h2 {
+    font-size: $font-2xl;
+    color: var(--text-primary);
+  }
+}
+
+.study-page__complete-stats {
+  font-size: $font-lg;
+  color: var(--text-secondary);
+}
+
+.study-page__complete-actions {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  width: 100%;
+  max-width: 280px;
+}
+
+.study-page__btn {
+  @include touch-target;
+  padding: $space-md $space-lg;
+  font-size: $font-base;
+  font-weight: 600;
+  border-radius: $radius-md;
+  background: var(--accent);
+  color: white;
+
+  &--secondary {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    text-align: center;
+    text-decoration: none;
+  }
+}

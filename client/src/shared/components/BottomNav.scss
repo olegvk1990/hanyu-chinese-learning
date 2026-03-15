@@ -1,0 +1,46 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: var(--safe-bottom);
+  padding-top: $space-sm;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  z-index: $z-nav;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.bottom-nav__link {
+  @include flex-column;
+  @include touch-target($touch-min);
+  align-items: center;
+  gap: $space-xs;
+  font-size: $font-xs;
+  color: var(--text-tertiary);
+  text-decoration: none;
+  transition: color $transition-fast;
+  flex: 1;
+
+  &:hover,
+  &:focus {
+    color: var(--text-secondary);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  &--active {
+    color: var(--accent);
+    font-weight: 600;
+  }
+}
