@@ -1,7 +1,8 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { useGetStudyCardsQuery } from '../features/cards/api/cardsApi';
-import { useUpdateProgressMutation } from '../features/progress/api/progressApi';
+import { useUpdateProgressMutation, useSaveStudyStateMutation } from '../features/progress/api/progressApi';
 import { useGetCategoriesQuery } from '../features/categories/api/categoriesApi';
 import { FlashCard } from '../features/cards/components/FlashCard';
 import { Loader } from '../shared/components/Loader';
@@ -25,7 +26,7 @@ function loadState(categorySlug) {
   } catch { return null; }
 }
 
-function saveState(categorySlug, state) {
+function saveStateLocal(categorySlug, state) {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     const all = raw ? JSON.parse(raw) : {};
@@ -75,10 +76,11 @@ const ICONS = {
   ),
 };
 
-function WordTable({ words, showPinyin, learnedIds, onToggleLearned }) {
+function WordTable({ words, showPinyin, learnedIds, selectedIds, onToggleLearned, onToggleSelected, selectionMode }) {
   return (
     <div className="word-table">
       <div className="word-table__header">
+        {selectionMode && <span className="word-table__col word-table__col--sel" />}
         <span className="word-table__col word-table__col--zh">汉字</span>
         {showPinyin && <span className="word-table__col word-table__col--py">拼音</span>}
         <span className="word-table__col word-table__col--ru">Перевод</span>
@@ -89,8 +91,19 @@ function WordTable({ words, showPinyin, learnedIds, onToggleLearned }) {
           const w = normalizeWord(raw);
           const id = w?._id ?? w?.id ?? i;
           const learned = learnedIds.has(id);
+          const selected = selectedIds.has(id);
           return (
-            <div key={id} className={`word-table__row ${learned ? 'word-table__row--learned' : ''}`}>
+            <div key={id} className={`word-table__row ${learned ? 'word-table__row--learned' : ''} ${selected ? 'word-table__row--selected' : ''}`}>
+              {selectionMode && (
+                <span className="word-table__col word-table__col--sel">
+                  <input
+                    type="checkbox"
+                    checked={selected}
+                    onChange={() => onToggleSelected(id)}
+                    className="word-table__checkbox"
+                  />
+                </span>
+              )}
               <span className="word-table__col word-table__col--zh">{w?.chinese}</span>
               {showPinyin && <span className="word-table__col word-table__col--py">{w?.pinyin}</span>}
               <span className="word-table__col word-table__col--ru">{w?.translations?.ru}</span>
@@ -116,6 +129,7 @@ function WordTable({ words, showPinyin, learnedIds, onToggleLearned }) {
 
 export default function StudyPage() {
   const { categorySlug } = useParams();
+  const token = useSelector((s) => s.auth.token);
 
   const saved = useMemo(() => categorySlug ? loadState(categorySlug) : null, [categorySlug]);
 
@@ -124,6 +138,9 @@ export default function StudyPage() {
   const [learnedIds, setLearnedIds] = useState(() => new Set(saved?.learnedIds ?? []));
   const [showPinyin, setShowPinyin] = useState(saved?.showPinyin ?? true);
   const [viewMode, setViewMode] = useState(saved?.viewMode ?? 'cards');
+  const [selectedIds, setSelectedIds] = useState(() => new Set(saved?.selectedWordIds ?? []));
+  const [selectionMode, setSelectionMode] = useState(false);
+  const [studySelected, setStudySelected] = useState(false);
 
   const { data: categoriesData } = useGetCategoriesQuery();
   const categories = categoriesData?.data ?? [];
@@ -135,23 +152,40 @@ export default function StudyPage() {
   );
 
   const [updateProgress] = useUpdateProgressMutation();
+  const [saveStudyState] = useSaveStudyStateMutation();
+  const saveTimerRef = useRef(null);
 
-  const words = data?.data ?? [];
+  const allWords = data?.data ?? [];
+  const words = studySelected && selectedIds.size > 0
+    ? allWords.filter((w) => selectedIds.has(w._id ?? w.id))
+    : allWords;
   const total = words.length;
   const currentWord = normalizeWord(words[currentIndex]);
   const learnedCount = learnedIds.size;
 
-
-  useEffect(() => {
+  const persistState = useCallback(() => {
     if (!categorySlug || isLoading) return;
-    saveState(categorySlug, {
+    const state = {
       difficulty,
       currentIndex,
       learnedIds: [...learnedIds],
       showPinyin,
       viewMode,
-    });
-  }, [categorySlug, difficulty, currentIndex, learnedIds, showPinyin, viewMode, isLoading]);
+      selectedWordIds: [...selectedIds],
+    };
+    saveStateLocal(categorySlug, state);
+    if (token) {
+      if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+      saveTimerRef.current = setTimeout(() => {
+        saveStudyState({ categorySlug, state }).catch(() => {});
+      }, 2000);
+    }
+  }, [categorySlug, difficulty, currentIndex, learnedIds, showPinyin, viewMode, selectedIds, isLoading, token, saveStudyState]);
+
+  useEffect(() => {
+    persistState();
+    return () => { if (saveTimerRef.current) clearTimeout(saveTimerRef.current); };
+  }, [persistState]);
 
   useEffect(() => {
     if (!categorySlug) return;
@@ -162,13 +196,17 @@ export default function StudyPage() {
       setLearnedIds(new Set(s.learnedIds ?? []));
       setShowPinyin(s.showPinyin ?? true);
       setViewMode(s.viewMode ?? 'cards');
+      setSelectedIds(new Set(s.selectedWordIds ?? []));
     } else {
       setDifficulty('');
       setCurrentIndex(0);
       setLearnedIds(new Set());
       setShowPinyin(true);
       setViewMode('cards');
+      setSelectedIds(new Set());
     }
+    setStudySelected(false);
+    setSelectionMode(false);
   }, [categorySlug]);
 
   const handleLearned = async () => {
@@ -207,6 +245,29 @@ export default function StudyPage() {
     }
   };
 
+  const handleToggleSelected = (id) => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  };
+
+  const handleStudySelected = () => {
+    setStudySelected(true);
+    setViewMode('cards');
+    setCurrentIndex(0);
+  };
+
+  const handleSelectAll = () => {
+    const allIds = allWords.map((w) => w._id ?? w.id);
+    setSelectedIds(new Set(allIds));
+  };
+
+  const handleDeselectAll = () => {
+    setSelectedIds(new Set());
+  };
+
   const goNext = () => {
     if (currentIndex < total - 1) {
       setCurrentIndex((i) => i + 1);
@@ -240,7 +301,7 @@ export default function StudyPage() {
     );
   }
 
-  if (total === 0) {
+  if (total === 0 && !studySelected) {
     return (
       <div className="study-page">
         <div className="study-page__empty">
@@ -263,26 +324,13 @@ export default function StudyPage() {
             Изучено карточек: {total}. Выучено: {learnedCount}
           </p>
           <div className="study-page__complete-actions">
-            <button
-              type="button"
-              className="study-page__btn"
-              onClick={() => {
-                setCurrentIndex(0);
-                setLearnedIds(new Set());
-              }}
-            >
+            <button type="button" className="study-page__btn" onClick={() => { setCurrentIndex(0); setLearnedIds(new Set()); }}>
               Ещё раз
             </button>
-            <button
-              type="button"
-              className="study-page__btn study-page__btn--outline"
-              onClick={() => setViewMode('table')}
-            >
+            <button type="button" className="study-page__btn study-page__btn--outline" onClick={() => { setViewMode('table'); setStudySelected(false); }}>
               Режим таблицы
             </button>
-            <Link to="/" className="study-page__btn study-page__btn--secondary">
-              ← Категории
-            </Link>
+            <Link to="/" className="study-page__btn study-page__btn--secondary">← Категории</Link>
           </div>
         </div>
       </div>
@@ -308,6 +356,7 @@ export default function StudyPage() {
                 setDifficulty(d.value);
                 setCurrentIndex(0);
                 setLearnedIds(new Set());
+                setStudySelected(false);
               }}
             >
               {d.label}
@@ -316,34 +365,22 @@ export default function StudyPage() {
         </div>
         <div className="study-page__controls">
           {viewMode === 'cards' && (
-            <p className="study-page__counter">{displayIndex} / {total}</p>
+            <p className="study-page__counter">
+              {studySelected && <span className="study-page__badge">Выбранные</span>}
+              {displayIndex} / {total}
+            </p>
           )}
           {viewMode === 'table' && (
-            <p className="study-page__counter">Всего: {total} · Выучено: {learnedCount}</p>
+            <p className="study-page__counter">Всего: {allWords.length} · Выучено: {learnedCount}{selectedIds.size > 0 && ` · Выбрано: ${selectedIds.size}`}</p>
           )}
           <div className="study-page__toggles">
-            <button
-              type="button"
-              className={`study-page__mode-toggle ${viewMode === 'cards' ? 'study-page__mode-toggle--active' : ''}`}
-              onClick={() => setViewMode('cards')}
-              aria-label="Карточки"
-            >
+            <button type="button" className={`study-page__mode-toggle ${viewMode === 'cards' ? 'study-page__mode-toggle--active' : ''}`} onClick={() => setViewMode('cards')} aria-label="Карточки">
               {ICONS.cards}
             </button>
-            <button
-              type="button"
-              className={`study-page__mode-toggle ${viewMode === 'table' ? 'study-page__mode-toggle--active' : ''}`}
-              onClick={() => setViewMode('table')}
-              aria-label="Таблица"
-            >
+            <button type="button" className={`study-page__mode-toggle ${viewMode === 'table' ? 'study-page__mode-toggle--active' : ''}`} onClick={() => { setViewMode('table'); setStudySelected(false); }} aria-label="Таблица">
               {ICONS.table}
             </button>
-            <button
-              type="button"
-              className={`study-page__pinyin-toggle ${showPinyin ? 'study-page__pinyin-toggle--active' : ''}`}
-              onClick={() => setShowPinyin((p) => !p)}
-              aria-label="Toggle pinyin"
-            >
+            <button type="button" className={`study-page__pinyin-toggle ${showPinyin ? 'study-page__pinyin-toggle--active' : ''}`} onClick={() => setShowPinyin((p) => !p)} aria-label="Пиньинь">
               {showPinyin ? ICONS.eye : ICONS.eyeOff}
               <span>Пиньинь</span>
             </button>
@@ -365,12 +402,37 @@ export default function StudyPage() {
       )}
 
       {viewMode === 'table' && (
-        <WordTable
-          words={words}
-          showPinyin={showPinyin}
-          learnedIds={learnedIds}
-          onToggleLearned={handleToggleTableLearned}
-        />
+        <>
+          <div className="study-page__table-actions">
+            <button
+              type="button"
+              className={`study-page__select-toggle ${selectionMode ? 'study-page__select-toggle--active' : ''}`}
+              onClick={() => setSelectionMode((p) => !p)}
+            >
+              {selectionMode ? 'Готово' : 'Выбрать слова'}
+            </button>
+            {selectionMode && (
+              <>
+                <button type="button" className="study-page__select-btn" onClick={handleSelectAll}>Все</button>
+                <button type="button" className="study-page__select-btn" onClick={handleDeselectAll}>Сбросить</button>
+              </>
+            )}
+            {selectedIds.size > 0 && (
+              <button type="button" className="study-page__study-selected-btn" onClick={handleStudySelected}>
+                Учить выбранные ({selectedIds.size})
+              </button>
+            )}
+          </div>
+          <WordTable
+            words={allWords}
+            showPinyin={showPinyin}
+            learnedIds={learnedIds}
+            selectedIds={selectedIds}
+            onToggleLearned={handleToggleTableLearned}
+            onToggleSelected={handleToggleSelected}
+            selectionMode={selectionMode}
+          />
+        </>
       )}
     </div>
   );

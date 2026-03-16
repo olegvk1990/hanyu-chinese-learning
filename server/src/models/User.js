@@ -22,6 +22,19 @@ const userSchema = new mongoose.Schema({
     enum: ['ru', 'en'],
     default: 'ru'
   },
+  studyState: {
+    type: Map,
+    of: {
+      currentIndex: { type: Number, default: 0 },
+      difficulty: { type: String, default: '' },
+      showPinyin: { type: Boolean, default: true },
+      viewMode: { type: String, default: 'cards' },
+      learnedIds: [String],
+      selectedWordIds: [String],
+      ts: Number
+    },
+    default: {}
+  },
   createdAt: {
     type: Date,
     default: Date.now

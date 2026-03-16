@@ -192,6 +192,65 @@
   }
 }
 
+.study-page__badge {
+  display: inline-block;
+  padding: 2px $space-sm;
+  margin-right: $space-xs;
+  font-size: $font-xs;
+  font-weight: 600;
+  border-radius: $radius-full;
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.study-page__table-actions {
+  display: flex;
+  gap: $space-sm;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.study-page__select-toggle {
+  padding: $space-xs $space-md;
+  font-size: $font-sm;
+  font-weight: 500;
+  border-radius: $radius-full;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &--active {
+    background: var(--accent-light);
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+}
+
+.study-page__select-btn {
+  padding: $space-xs $space-sm;
+  font-size: $font-xs;
+  border-radius: $radius-full;
+  background: var(--bg-secondary);
+  color: var(--text-tertiary);
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.study-page__study-selected-btn {
+  padding: $space-xs $space-md;
+  font-size: $font-sm;
+  font-weight: 600;
+  border-radius: $radius-full;
+  background: var(--accent);
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+}
+
 // Word Table
 .word-table {
   width: 100%;
@@ -232,9 +291,24 @@
   &--learned {
     background: var(--success-light);
   }
+
+  &--selected {
+    background: var(--accent-light);
+  }
+
+  &--learned#{&}--selected {
+    background: var(--success-light);
+  }
 }
 
 .word-table__col {
+  &--sel {
+    flex: 0 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   &--zh {
     flex: 0 0 28%;
     font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
@@ -284,4 +358,11 @@
     color: white;
     border-color: var(--success);
   }
+}
+
+.word-table__checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  cursor: pointer;
 }

@@ -1,5 +1,6 @@
 const express = require('express');
 const Progress = require('../models/Progress');
+const User = require('../models/User');
 const { success } = require('../utils/response');
 const { asyncHandler } = require('../middleware/errorHandler');
 const { protect } = require('../middleware/auth');
@@ -114,6 +115,36 @@ router.get(
         populate: { path: 'category', select: 'name slug' }
       });
     return success(res, items);
+  })
+);
+
+router.get(
+  '/study-state',
+  asyncHandler(async (req, res) => {
+    const user = await User.findById(req.user._id).select('studyState');
+    return success(res, user?.studyState ?? {});
+  })
+);
+
+router.put(
+  '/study-state',
+  asyncHandler(async (req, res) => {
+    const { categorySlug, state } = req.body;
+    if (!categorySlug || !state) {
+      return res.status(400).json({ success: false, error: 'categorySlug and state required' });
+    }
+    const update = {};
+    update[`studyState.${categorySlug}`] = {
+      currentIndex: state.currentIndex ?? 0,
+      difficulty: state.difficulty ?? '',
+      showPinyin: state.showPinyin ?? true,
+      viewMode: state.viewMode ?? 'cards',
+      learnedIds: state.learnedIds ?? [],
+      selectedWordIds: state.selectedWordIds ?? [],
+      ts: Date.now()
+    };
+    await User.findByIdAndUpdate(req.user._id, { $set: update });
+    return success(res, { saved: true });
   })
 );
 

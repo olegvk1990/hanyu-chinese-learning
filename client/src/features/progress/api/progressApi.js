@@ -22,6 +22,18 @@ export const progressApi = baseApi.injectEndpoints({
       query: () => '/progress/learned',
       providesTags: ['Progress'],
     }),
+    getStudyState: builder.query({
+      query: () => '/progress/study-state',
+      providesTags: ['StudyState'],
+    }),
+    saveStudyState: builder.mutation({
+      query: ({ categorySlug, state }) => ({
+        url: '/progress/study-state',
+        method: 'PUT',
+        body: { categorySlug, state },
+      }),
+      invalidatesTags: ['StudyState'],
+    }),
   }),
 });
 
@@ -30,4 +42,6 @@ export const {
   useUpdateProgressMutation,
   useGetReviewCardsQuery,
   useGetLearnedWordsQuery,
+  useGetStudyStateQuery,
+  useSaveStudyStateMutation,
 } = progressApi;
