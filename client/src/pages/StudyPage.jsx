@@ -148,7 +148,7 @@ export default function StudyPage() {
   return (
     <div className="study-page">
       <div className="study-page__header">
-        <h1 className="study-page__title">{category?.nameZh || categorySlug}</h1>
+        <h1 className="study-page__title">{category?.name?.zh ?? categorySlug}</h1>
         <div className="study-page__filters">
           {DIFFICULTIES.map((d) => (
             <button

@@ -79,7 +79,7 @@ export default function LearnedPage() {
             <option value="">All categories</option>
             {categories.map((c) => (
               <option key={c._id || c.slug} value={c.slug}>
-                {c.nameZh || c.name}
+                {c.name?.zh ?? c.slug}
               </option>
             ))}
           </select>

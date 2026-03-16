@@ -100,10 +100,10 @@ export default function CategoriesPage() {
                     {getEmoji(cat.slug)}
                   </span>
                   <span className="categories-page__name-zh">
-                    {cat.nameZh || cat.name}
+                    {cat.name?.zh ?? cat.name}
                   </span>
                   <span className="categories-page__name-ru">
-                    {cat.nameRu || cat.nameEn || ''}
+                    {cat.name?.ru ?? cat.name?.en ?? ''}
                   </span>
                   <span className="categories-page__badge">
                     {cat.wordCount ?? 0} words

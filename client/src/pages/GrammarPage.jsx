@@ -51,7 +51,7 @@ export default function GrammarPage() {
               className={`grammar-page__tab ${categoryFilter === c.slug ? 'grammar-page__tab--active' : ''}`}
               onClick={() => setCategoryFilter(c.slug)}
             >
-              {c.nameZh || c.name}
+              {c.name?.zh ?? c.slug}
             </button>
           ))}
         </div>
