@@ -28,11 +28,24 @@
   gap: $space-md;
 }
 
+.study-page__title-row {
+  display: flex;
+  align-items: baseline;
+  gap: $space-sm;
+  flex-wrap: wrap;
+}
+
 .study-page__title {
   font-size: $font-xl;
   font-weight: 600;
   color: var(--text-primary);
   font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+.study-page__title-ru {
+  font-size: $font-sm;
+  font-weight: 400;
+  color: var(--text-secondary);
 }
 
 .study-page__filters {
@@ -58,9 +71,69 @@
   }
 }
 
+.study-page__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .study-page__counter {
   font-size: $font-sm;
   color: var(--text-tertiary);
+}
+
+.study-page__toggles {
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+}
+
+.study-page__mode-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-md;
+  background: var(--bg-secondary);
+  color: var(--text-tertiary);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+
+  &--active {
+    background: var(--accent-light);
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+}
+
+.study-page__pinyin-toggle {
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+  padding: $space-xs $space-sm;
+  font-size: $font-sm;
+  font-weight: 500;
+  border-radius: $radius-full;
+  background: var(--bg-secondary);
+  color: var(--text-tertiary);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+
+  &--active {
+    background: var(--accent-light);
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
 }
 
 .study-page__card-wrap {
@@ -68,27 +141,6 @@
   max-width: 400px;
   display: flex;
   justify-content: center;
-}
-
-.study-page__actions {
-  width: 100%;
-  max-width: 360px;
-  display: flex;
-  justify-content: center;
-}
-
-.study-page__skip {
-  @include touch-target;
-  padding: $space-sm $space-lg;
-  font-size: $font-base;
-  color: var(--text-secondary);
-  background: transparent;
-  border: 1px solid var(--border);
-
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
 }
 
 .study-page__complete {
@@ -125,11 +177,111 @@
   border-radius: $radius-md;
   background: var(--accent);
   color: white;
+  text-align: center;
+  text-decoration: none;
 
   &--secondary {
     background: var(--bg-secondary);
     color: var(--text-primary);
-    text-align: center;
-    text-decoration: none;
+  }
+
+  &--outline {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+  }
+}
+
+// Word Table
+.word-table {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.word-table__header {
+  display: flex;
+  padding: $space-sm $space-md;
+  background: var(--bg-secondary);
+  border-radius: $radius-md $radius-md 0 0;
+  font-size: $font-xs;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.word-table__body {
+  @include flex-column;
+}
+
+.word-table__row {
+  display: flex;
+  padding: $space-sm $space-md;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+  transition: background $transition-fast;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &--learned {
+    background: var(--success-light);
+  }
+}
+
+.word-table__col {
+  &--zh {
+    flex: 0 0 28%;
+    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+    font-size: $font-lg;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  &--py {
+    flex: 0 0 22%;
+    font-size: $font-sm;
+    color: var(--accent);
+  }
+
+  &--ru {
+    flex: 1;
+    font-size: $font-sm;
+    color: var(--text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &--act {
+    flex: 0 0 40px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.word-table__learn-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-full;
+  background: transparent;
+  color: var(--text-tertiary);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+
+  &--active {
+    background: var(--success);
+    color: white;
+    border-color: var(--success);
   }
 }

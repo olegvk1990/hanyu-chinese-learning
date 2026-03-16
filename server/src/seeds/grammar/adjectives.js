@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: { zh: '程度补语', ru: 'Комплемент степени', en: 'Degree complements' },
+    title: { zh: '程度补语', pinyin: 'Chéngdù bǔyǔ', ru: 'Комплемент степени', en: 'Degree complements' },
     explanation: { ru: 'Комплемент степени с 得 описывает степень или результат действия. Структура: глагол/прилаг. + 得 + описание степени.', en: 'The degree complement with 得 describes the degree or result of an action. Structure: verb/adj + 得 + degree description.' },
     pattern: 'verb/adj + 得 + degree description',
     examples: [
@@ -11,7 +11,7 @@ module.exports = [
     difficulty: 'medium'
   },
   {
-    title: { zh: '极了', ru: 'Суффикс 极了 — крайняя степень', en: 'The suffix 极了 — extreme degree' },
+    title: { zh: '极了', pinyin: 'Jí le', ru: 'Суффикс 极了 — крайняя степень', en: 'The suffix 极了 — extreme degree' },
     explanation: { ru: '极了 ставится после прилагательного и означает крайнюю степень качества — "чрезвычайно", "крайне".', en: '极了 is placed after an adjective to indicate the extreme degree of a quality — "extremely".' },
     pattern: 'adj + 极了',
     examples: [
@@ -22,7 +22,7 @@ module.exports = [
     difficulty: 'easy'
   },
   {
-    title: { zh: '形容词重叠 AA / AABB', ru: 'Редупликация прилагательных AA / AABB', en: 'Adjective reduplication AA / AABB' },
+    title: { zh: '形容词重叠 AA / AABB', pinyin: 'Xíngróngcí chóngdié AA / AABB', ru: 'Редупликация прилагательных AA / AABB', en: 'Adjective reduplication AA / AABB' },
     explanation: { ru: 'Односложные прилагательные удваиваются (AA): 大大, 高高. Двусложные — по схеме AABB: 干干净净, 高高兴兴. Редупликация усиливает значение и делает речь более живой.', en: 'Monosyllabic adjectives are reduplicated (AA): 大大, 高高. Disyllabic adjectives follow AABB: 干干净净, 高高兴兴. Reduplication intensifies meaning and makes speech more vivid.' },
     pattern: 'AA 的 + noun | AABB 的 + noun',
     examples: [
@@ -33,7 +33,7 @@ module.exports = [
     difficulty: 'medium'
   },
   {
-    title: { zh: '越来越 + 形容词', ru: 'Всё более и более', en: 'More and more + adjective' },
+    title: { zh: '越来越 + 形容词', pinyin: 'Yuèláiyuè + xíngróngcí', ru: 'Всё более и более', en: 'More and more + adjective' },
     explanation: { ru: '越来越 используется перед прилагательным или глаголом для обозначения нарастания качества или действия со временем.', en: '越来越 is used before an adjective or verb to express an increasing trend over time.' },
     pattern: '越来越 + adj/verb',
     examples: [

@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: { zh: '动词 + 了 (完成体)', ru: 'Глагол + 了 (совершённый вид)', en: 'Verb + 了 (perfective aspect)' },
+    title: { zh: '动词 + 了 (完成体)', pinyin: 'Dòngcí + le (wánchéng tǐ)', ru: 'Глагол + 了 (совершённый вид)', en: 'Verb + 了 (perfective aspect)' },
     explanation: {
       ru: 'Частица 了 после глагола указывает на завершённость действия. Действие уже произошло или завершено.',
       en: 'The particle 了 after a verb indicates completed action. The action has already happened or been completed.'
@@ -14,7 +14,7 @@ module.exports = [
     difficulty: 'easy'
   },
   {
-    title: { zh: '正在 / 在 + 动词 (进行体)', ru: '正在/在 + глагол (длительный вид)', en: '正在/在 + verb (progressive aspect)' },
+    title: { zh: '正在 / 在 + 动词 (进行体)', pinyin: 'Zhèngzài / zài + dòngcí (jìnxíng tǐ)', ru: '正在/在 + глагол (длительный вид)', en: '正在/在 + verb (progressive aspect)' },
     explanation: {
       ru: 'Конструкция 正在 или 在 перед глаголом указывает на действие в процессе. Часто используется с 呢 в конце предложения.',
       en: 'The construction 正在 or 在 before a verb indicates an action in progress. Often used with 呢 at the end of the sentence.'
@@ -28,7 +28,7 @@ module.exports = [
     difficulty: 'easy'
   },
   {
-    title: { zh: '能愿动词: 想、要、会、可以', ru: 'Модальные глаголы: 想、要、会、可以', en: 'Modal verbs: 想、要、会、可以' },
+    title: { zh: '能愿动词: 想、要、会、可以', pinyin: 'Néngyuàn dòngcí: xiǎng, yào, huì, kěyǐ', ru: 'Модальные глаголы: 想、要、会、可以', en: 'Modal verbs: 想、要、会、可以' },
     explanation: {
       ru: 'Модальные глаголы ставятся перед основным глаголом. 想 — хотеть/думать, 要 — хотеть/нужно, 会 — уметь/будет, 可以 — можно.',
       en: 'Modal verbs are placed before the main verb. 想 — want/think, 要 — want/need, 会 — can/will, 可以 — may/can.'
@@ -42,7 +42,7 @@ module.exports = [
     difficulty: 'medium'
   },
   {
-    title: { zh: '动词重叠 (尝试或短暂)', ru: 'Удвоение глагола (попытка или краткость)', en: 'Verb reduplication (tentative or brief)' },
+    title: { zh: '动词重叠 (尝试或短暂)', pinyin: 'Dòngcí chóngdié (chángshì huò duǎnzàn)', ru: 'Удвоение глагола (попытка или краткость)', en: 'Verb reduplication (tentative or brief)' },
     explanation: {
       ru: 'Удвоение односложного глагола (АА) или  А一А придаёт действию оттенок краткости, смягчения или попытки. Часто используется в просьбах.',
       en: 'Reduplicating a monosyllabic verb (AA) or A一A gives the action a sense of brevity, softness, or attempt. Often used in requests.'

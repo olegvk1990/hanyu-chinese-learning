@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: { zh: '身体部位 + 疼', ru: 'Части тела + 疼', en: 'Body part + 疼 (hurt)' },
+    title: { zh: '身体部位 + 疼', pinyin: 'Shēntǐ bùwèi + téng', ru: 'Части тела + 疼', en: 'Body part + 疼 (hurt)' },
     explanation: {
       ru: 'Для выражения боли в определённой части тела используется структура: часть тела + 疼. Слово 疼 означает «болеть».',
       en: 'To express pain in a specific body part, use the structure: body part + 疼. 疼 means "to hurt".'
@@ -14,7 +14,7 @@ module.exports = [
     difficulty: 'easy'
   },
   {
-    title: { zh: '用 + 身体部位 + 做动作', ru: '用 + часть тела + действие', en: '用 + body part + action' },
+    title: { zh: '用 + 身体部位 + 做动作', pinyin: 'Yòng + shēntǐ bùwèi + zuò dòngzuò', ru: '用 + часть тела + действие', en: '用 + body part + action' },
     explanation: {
       ru: 'Предлог 用 указывает на инструмент или часть тела, которой совершается действие. Структура: 用 + часть тела + глагол.',
       en: 'The preposition 用 indicates the tool or body part used to perform an action. Structure: 用 + body part + verb.'
@@ -28,7 +28,7 @@ module.exports = [
     difficulty: 'medium'
   },
   {
-    title: { zh: '身体部位的量词', ru: 'Счётные слова для частей тела', en: 'Measure words for body parts' },
+    title: { zh: '身体部位的量词', pinyin: 'Shēntǐ bùwèi de liàngcí', ru: 'Счётные слова для частей тела', en: 'Measure words for body parts' },
     explanation: {
       ru: 'В китайском для частей тела используются разные счётные слова: 只 для парных органов (глаза, уши, руки, ноги), 颗 для мелких (зубы), 根 для длинных (пальцы, волосы).',
       en: 'Chinese uses different measure words for body parts: 只 for paired organs (eyes, ears, hands, feet), 颗 for small items (teeth), 根 for long items (fingers, hair).'

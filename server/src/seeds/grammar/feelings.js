@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: { zh: '让/使 + 因果句', ru: 'Каузативные конструкции с 让/使', en: 'Causative constructions with 让/使' },
+    title: { zh: '让/使 + 因果句', pinyin: 'Ràng/shǐ + yīnguǒ jù', ru: 'Каузативные конструкции с 让/使', en: 'Causative constructions with 让/使' },
     explanation: { ru: '让 и 使 означают "заставлять/вызывать". 让 — разговорный стиль, 使 — книжный. Структура: подлежащее + 让/使 + объект + глагол/прилагательное.', en: '让 and 使 mean "to make/to cause". 让 is colloquial, 使 is literary. Structure: subject + 让/使 + object + verb/adjective.' },
     pattern: 'A + 让/使 + B + verb/adj',
     examples: [
@@ -11,7 +11,7 @@ module.exports = [
     difficulty: 'medium'
   },
   {
-    title: { zh: '感到/觉得', ru: 'Глаголы чувства 感到/觉得', en: 'Feeling verbs 感到/觉得' },
+    title: { zh: '感到/觉得', pinyin: 'Gǎndào/juéde', ru: 'Глаголы чувства 感到/觉得', en: 'Feeling verbs 感到/觉得' },
     explanation: { ru: '觉得 — "чувствовать, считать" (разговорный); 感到 — "ощущать" (более формальный). Оба ставятся перед прилагательным или предложением.', en: '觉得 means "to feel, to think" (colloquial); 感到 means "to feel" (more formal). Both precede an adjective or clause.' },
     pattern: 'subject + 觉得/感到 + adj/clause',
     examples: [
@@ -22,7 +22,7 @@ module.exports = [
     difficulty: 'easy'
   },
   {
-    title: { zh: '对...感兴趣', ru: 'Выражение интереса: 对...感兴趣', en: 'Expressing interest: 对...感兴趣' },
+    title: { zh: '对...感兴趣', pinyin: 'Duì...gǎn xìngqù', ru: 'Выражение интереса: 对...感兴趣', en: 'Expressing interest: 对...感兴趣' },
     explanation: { ru: 'Конструкция 对...感兴趣 означает "интересоваться чем-то". 对 указывает на объект интереса. Можно добавить степень: 很/非常/特别.', en: 'The construction 对...感兴趣 means "to be interested in something". 对 marks the object of interest. Degree words like 很/非常/特别 can be added.' },
     pattern: 'subject + 对 + object + (很) 感兴趣',
     examples: [
@@ -33,7 +33,7 @@ module.exports = [
     difficulty: 'easy'
   },
   {
-    title: { zh: '情感变化: 从...变得...', ru: 'Изменение состояния чувств', en: 'Change of emotional state' },
+    title: { zh: '情感变化: 从...变得...', pinyin: 'Qínggǎn biànhuà: cóng...biàn de...', ru: 'Изменение состояния чувств', en: 'Change of emotional state' },
     explanation: { ru: 'Для описания изменения эмоционального состояния используют конструкцию 从...变得... или глагол + 起来 для начала нового состояния.', en: 'To describe a change in emotional state, use 从...变得... or verb + 起来 for the onset of a new state.' },
     pattern: '从 + state A + 变得 + state B | adj + 起来',
     examples: [

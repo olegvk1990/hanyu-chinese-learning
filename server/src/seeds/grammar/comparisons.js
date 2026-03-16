@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: { zh: '比字句 (比较句)', ru: 'Предложение с 比 (сравнение)', en: '比 sentence (comparison)' },
+    title: { zh: '比字句 (比较句)', pinyin: 'Bǐ zì jù (bǐjiào jù)', ru: 'Предложение с 比 (сравнение)', en: '比 sentence (comparison)' },
     explanation: {
       ru: 'Структура A 比 B + прилагательное выражает сравнение: A более [прилагательное], чем B. Прилагательное может быть усилено 更, 多了, 得多.',
       en: 'The structure A 比 B + adjective expresses comparison: A is more [adjective] than B. The adjective can be intensified with 更, 多了, 得多.'
@@ -14,7 +14,7 @@ module.exports = [
     difficulty: 'easy'
   },
   {
-    title: { zh: '最 ( superlative )', ru: '最 (превосходная степень)', en: '最 (superlative)' },
+    title: { zh: '最 ( superlative )', pinyin: 'Zuì (superlative)', ru: '最 (превосходная степень)', en: '最 (superlative)' },
     explanation: {
       ru: '最 + прилагательное образует превосходную степень: «самый». Структура: 最 + прилагательное (+ 的 + существительное).',
       en: '最 + adjective forms the superlative: "the most". Structure: 最 + adjective (+ 的 + noun).'
@@ -28,7 +28,7 @@ module.exports = [
     difficulty: 'easy'
   },
   {
-    title: { zh: '一样 (одинаково)', ru: '一样 (одинаково)', en: '一样 (the same)' },
+    title: { zh: '一样 (одинаково)', pinyin: 'Yīyàng (одинаково)', ru: '一样 (одинаково)', en: '一样 (the same)' },
     explanation: {
       ru: 'Структура A 跟/和 B 一样 + прилагательное означает «A такой же [прилагательное], как B». 一样 может использоваться и как предикат.',
       en: 'The structure A 跟/和 B 一样 + adjective means "A is as [adjective] as B". 一样 can also be used as a predicate.'
@@ -42,7 +42,7 @@ module.exports = [
     difficulty: 'easy'
   },
   {
-    title: { zh: '越来越 (всё больше)', ru: '越来越 (всё больше)', en: '越来越 (more and more)' },
+    title: { zh: '越来越 (всё больше)', pinyin: 'Yuèláiyuè (всё больше)', ru: '越来越 (всё больше)', en: '越来越 (more and more)' },
     explanation: {
       ru: 'Конструкция 越来越 + прилагательное/глагол выражает постепенное усиление: «становится всё более». Подчёркивает изменение во времени.',
       en: 'The construction 越来越 + adjective/verb expresses gradual increase: "getting more and more". Emphasizes change over time.'

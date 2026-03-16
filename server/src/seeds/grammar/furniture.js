@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: { zh: '把字句 — 移动物体', ru: 'Конструкция 把 — перемещение предметов', en: 'The 把 construction — moving objects' },
+    title: { zh: '把字句 — 移动物体', pinyin: 'Bǎ zì jù — yídòng wùtǐ', ru: 'Конструкция 把 — перемещение предметов', en: 'The 把 construction — moving objects' },
     explanation: { ru: 'Конструкция 把 используется, когда действие производит конкретное изменение над объектом (перемещение, изменение состояния). Структура: 把 + объект + глагол + результат/направление.', en: 'The 把 construction is used when an action produces a specific change to an object (movement, state change). Structure: 把 + object + verb + result/direction.' },
     pattern: 'subject + 把 + object + verb + complement',
     examples: [
@@ -11,7 +11,7 @@ module.exports = [
     difficulty: 'medium'
   },
   {
-    title: { zh: '在/上/里 — 位置关系', ru: 'Указатели местоположения 在/上/里', en: 'Location markers 在/上/里' },
+    title: { zh: '在/上/里 — 位置关系', pinyin: 'Zài/shàng/lǐ — wèizhì guānxì', ru: 'Указатели местоположения 在/上/里', en: 'Location markers 在/上/里' },
     explanation: { ru: '在 указывает местонахождение; 上 — на поверхности; 里 — внутри. Комбинация 在 + место + 上/里/下 точно описывает расположение мебели и предметов.', en: '在 indicates location; 上 means on the surface; 里 means inside. Combining 在 + place + 上/里/下 precisely describes furniture and object placement.' },
     pattern: 'object + 在 + place + 上/里/下/旁边',
     examples: [
@@ -22,7 +22,7 @@ module.exports = [
     difficulty: 'easy'
   },
   {
-    title: { zh: '放/摆/挂 — 动词放置', ru: 'Глаголы размещения: 放/摆/挂', en: 'Placement verbs: 放/摆/挂' },
+    title: { zh: '放/摆/挂 — 动词放置', pinyin: 'Fàng/bǎi/guà — dòngcí fàngzhì', ru: 'Глаголы размещения: 放/摆/挂', en: 'Placement verbs: 放/摆/挂' },
     explanation: { ru: '放 — ставить/класть (общее); 摆 — расставлять, расположить (аккуратно, декоративно); 挂 — вешать. Выбор глагола зависит от способа размещения предмета.', en: '放 means to put/place (general); 摆 means to arrange/display (neatly, decoratively); 挂 means to hang. The verb choice depends on how the object is placed.' },
     pattern: '把 + object + 放/摆/挂 + 在 + location',
     examples: [
@@ -33,7 +33,7 @@ module.exports = [
     difficulty: 'medium'
   },
   {
-    title: { zh: '有 + 家具 — 描述房间', ru: 'Описание комнаты с 有', en: 'Describing a room with 有' },
+    title: { zh: '有 + 家具 — 描述房间', pinyin: 'Yǒu + jiājù — miáoshù fángjiān', ru: 'Описание комнаты с 有', en: 'Describing a room with 有' },
     explanation: { ru: '有 используется для описания наличия мебели и предметов в комнате. Структура: место + 有 + предмет. Для перечисления используйте 有...还有...', en: '有 is used to describe the presence of furniture and objects in a room. Structure: place + 有 + item. Use 有...还有... for listing multiple items.' },
     pattern: 'place + 有 + item(s)',
     examples: [

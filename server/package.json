@@ -18,5 +18,8 @@
     "mongoose": "^8.0.3"
   },
   "keywords": [],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
 }

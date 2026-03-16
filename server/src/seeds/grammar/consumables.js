@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: { zh: '已经/还没(有)', ru: 'Временные маркеры 已经 и 还没(有)', en: 'Temporal markers 已经 and 还没(有)' },
+    title: { zh: '已经/还没(有)', pinyin: 'Yǐjīng/hái méi(yǒu)', ru: 'Временные маркеры 已经 и 还没(有)', en: 'Temporal markers 已经 and 还没(有)' },
     explanation: { ru: '已经 означает "уже" и указывает на завершённое действие (с 了). 还没有 означает "ещё не" и указывает на незавершённое действие (без 了 в конце).', en: '已经 means "already" and indicates a completed action (with 了). 还没有 means "not yet" and indicates an incomplete action (no 了 at the end).' },
     pattern: '已经 + verb + 了 | 还没(有) + verb',
     examples: [
@@ -11,7 +11,7 @@ module.exports = [
     difficulty: 'easy'
   },
   {
-    title: { zh: '一些/几个 — 不定量词', ru: 'Неопределённые квантификаторы 一些/几个', en: 'Indefinite quantifiers 一些/几个' },
+    title: { zh: '一些/几个 — 不定量词', pinyin: 'Yīxiē/jǐ gè — bùdìng liàngcí', ru: 'Неопределённые квантификаторы 一些/几个', en: 'Indefinite quantifiers 一些/几个' },
     explanation: { ru: '一些 означает "некоторое количество, несколько" (для исчисляемых и неисчисляемых). 几 + счётное слово означает "несколько" (только исчисляемые, обычно 2-9).', en: '一些 means "some, several" (for countable and uncountable). 几 + measure word means "a few" (countable only, usually 2-9).' },
     pattern: '一些 + noun | 几 + MW + noun',
     examples: [
@@ -22,7 +22,7 @@ module.exports = [
     difficulty: 'easy'
   },
   {
-    title: { zh: '需要/应该', ru: 'Модальные глаголы 需要 и 应该', en: 'Modal verbs 需要 and 应该' },
+    title: { zh: '需要/应该', pinyin: 'Xūyào/yīnggāi', ru: 'Модальные глаголы 需要 и 应该', en: 'Modal verbs 需要 and 应该' },
     explanation: { ru: '需要 означает "нуждаться, необходимо". 应该 означает "следует, должен". 需要 — объективная необходимость, 应该 — рекомендация или моральный долг.', en: '需要 means "to need". 应该 means "should". 需要 indicates objective necessity, 应该 indicates recommendation or moral duty.' },
     pattern: 'subject + 需要/应该 + verb + object',
     examples: [
@@ -33,7 +33,7 @@ module.exports = [
     difficulty: 'easy'
   },
   {
-    title: { zh: '快要...了 / 就要...了', ru: 'Скоро произойдёт: 快要/就要...了', en: 'About to happen: 快要/就要...了' },
+    title: { zh: '快要...了 / 就要...了', pinyin: 'Kuàiyào...le / jiùyào...le', ru: 'Скоро произойдёт: 快要/就要...了', en: 'About to happen: 快要/就要...了' },
     explanation: { ru: '快要...了 и 就要...了 означают "скоро, вот-вот". Используются для предупреждения о скором событии, например, что запас заканчивается.', en: '快要...了 and 就要...了 mean "about to, soon". Used to warn about an imminent event, e.g., supplies running out.' },
     pattern: '快要/就要 + verb + 了',
     examples: [

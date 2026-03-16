@@ -44,11 +44,11 @@ const UserIcon = () => (
 );
 
 const tabs = [
-  { path: '/', icon: GridIcon, label: 'Categories' },
-  { path: '/study', icon: BookIcon, label: 'Study' },
-  { path: '/learned', icon: CheckCircleIcon, label: 'Learned' },
-  { path: '/grammar', icon: DocumentIcon, label: 'Grammar' },
-  { path: '/profile', icon: UserIcon, label: 'Profile' },
+  { path: '/', icon: GridIcon, label: 'Темы' },
+  { path: '/study', icon: BookIcon, label: 'Учить' },
+  { path: '/learned', icon: CheckCircleIcon, label: 'Выучено' },
+  { path: '/grammar', icon: DocumentIcon, label: 'Грамматика' },
+  { path: '/profile', icon: UserIcon, label: 'Профиль' },
 ];
 
 export function BottomNav() {

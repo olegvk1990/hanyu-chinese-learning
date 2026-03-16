@@ -13,7 +13,8 @@ const grammarRuleSchema = new mongoose.Schema({
   title: {
     zh: { type: String },
     ru: { type: String },
-    en: { type: String }
+    en: { type: String },
+    pinyin: { type: String }
   },
   category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
   explanation: {

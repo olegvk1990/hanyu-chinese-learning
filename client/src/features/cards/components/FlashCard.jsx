@@ -28,7 +28,7 @@ const ICONS = {
   ),
 };
 
-export function FlashCard({ word, onKnow, onDontKnow, onLearned }) {
+export function FlashCard({ word, onKnow, onDontKnow, onLearned, showPinyin = true }) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [exiting, setExiting] = useState({ active: false, direction: null });
   const [showHardExamples, setShowHardExamples] = useState(false);
@@ -97,7 +97,7 @@ export function FlashCard({ word, onKnow, onDontKnow, onLearned }) {
               {word?.difficulty || 'medium'}
             </span>
             <div className="flash-card__chinese">{word?.chinese}</div>
-            <div className="flash-card__pinyin">{word?.pinyin}</div>
+            {showPinyin && <div className="flash-card__pinyin">{word?.pinyin}</div>}
           </div>
 
           {/* BACK */}
@@ -121,13 +121,13 @@ export function FlashCard({ word, onKnow, onDontKnow, onLearned }) {
                     setShowHardExamples((prev) => !prev);
                   }}
                 >
-                  {showHardExamples ? 'All examples' : 'Easy examples only'}
+                  {showHardExamples ? 'Все примеры' : 'Только лёгкие'}
                 </button>
                 <div className="flash-card__examples-list">
                   {filteredExamples.map((ex, i) => (
                     <div key={i} className="flash-card__example">
                       <div className="flash-card__example-chinese">{ex.chinese}</div>
-                      <div className="flash-card__example-pinyin">{ex.pinyin}</div>
+                      {showPinyin && <div className="flash-card__example-pinyin">{ex.pinyin}</div>}
                       <div className="flash-card__example-translation">
                         {ex.translation?.ru}
                         {ex.translation?.en && (
@@ -153,25 +153,25 @@ export function FlashCard({ word, onKnow, onDontKnow, onLearned }) {
           aria-label="Don't know"
         >
           {ICONS.dontKnow}
-          <span>Don't know</span>
+          <span>Не знаю</span>
         </button>
         <button
           type="button"
           className="flash-card__btn flash-card__btn--learned"
           onClick={handleLearned}
-          aria-label="Learned"
+          aria-label="Выучено"
         >
           {ICONS.learned}
-          <span>Learned</span>
+          <span>Выучил</span>
         </button>
         <button
           type="button"
           className="flash-card__btn flash-card__btn--know"
           onClick={handleKnow}
-          aria-label="Know"
+          aria-label="Знаю"
         >
           {ICONS.know}
-          <span>Know</span>
+          <span>Знаю</span>
         </button>
       </div>
     </div>

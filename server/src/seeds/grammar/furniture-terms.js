@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: { zh: '先...然后...最后', ru: 'Последовательность: 先...然后...最后', en: 'Sequence: 先...然后...最后' },
+    title: { zh: '先...然后...最后', pinyin: 'Xiān...ránhòu...zuìhòu', ru: 'Последовательность: 先...然后...最后', en: 'Sequence: 先...然后...最后' },
     explanation: { ru: 'Эта конструкция описывает последовательность действий: 先 (сначала), 然后 (затем), 最后 (наконец). Используется для описания процессов производства, рецептов, инструкций.', en: 'This construction describes a sequence of actions: 先 (first), 然后 (then), 最后 (finally). Used for production processes, recipes, and instructions.' },
     pattern: '先 + action1，然后 + action2，最后 + action3',
     examples: [
@@ -11,7 +11,7 @@ module.exports = [
     difficulty: 'easy'
   },
   {
-    title: { zh: '被字句 — 被动语态', ru: 'Пассивный залог с 被', en: 'Passive voice with 被' },
+    title: { zh: '被字句 — 被动语态', pinyin: 'Bèi zì jù — bèidòng yǔtài', ru: 'Пассивный залог с 被', en: 'Passive voice with 被' },
     explanation: { ru: 'Конструкция 被 используется для пассивного залога, когда важен результат действия или действующее лицо неизвестно/неважно. Часто для негативных или нейтральных контекстов.', en: 'The 被 construction is used for passive voice when the result is important or the agent is unknown/unimportant. Often for negative or neutral contexts.' },
     pattern: 'object + 被 + (agent) + verb + complement',
     examples: [
@@ -22,7 +22,7 @@ module.exports = [
     difficulty: 'hard'
   },
   {
-    title: { zh: '把...做成...', ru: 'Превращение: 把...做成...', en: 'Transform: 把...做成...' },
+    title: { zh: '把...做成...', pinyin: 'Bǎ...zuòchéng...', ru: 'Превращение: 把...做成...', en: 'Transform: 把...做成...' },
     explanation: { ru: 'Конструкция 把...做成/变成 описывает процесс превращения одного материала в другой продукт. 做成 — изготовить, 变成 — превратить.', en: 'The construction 把...做成/变成 describes transforming one material into another product. 做成 — to make into, 变成 — to turn into.' },
     pattern: '把 + raw material + 做成/变成 + product',
     examples: [

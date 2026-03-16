@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: { zh: '方位词 上/下/左/右/前/后', ru: 'Слова направления: 上/下/左/右/前/后', en: 'Directional words: 上/下/左/右/前/后' },
+    title: { zh: '方位词 上/下/左/右/前/后', pinyin: 'Fāngwèicí shàng/xià/zuǒ/yòu/qián/hòu', ru: 'Слова направления: 上/下/左/右/前/后', en: 'Directional words: 上/下/左/右/前/后' },
     explanation: { ru: 'Базовые слова направления: 上 (верх), 下 (низ), 左 (лево), 右 (право), 前 (перед), 后 (зад). Добавляется 面/边 для «сторона»: 上面, 左边.', en: 'Basic directional words: 上 (up), 下 (down), 左 (left), 右 (right), 前 (front), 后 (back). Add 面/边 for "side": 上面, 左边.' },
     pattern: 'noun + (的) + 上面/下面/左边/右边/前面/后面',
     examples: [
@@ -11,7 +11,7 @@ module.exports = [
     difficulty: 'easy'
   },
   {
-    title: { zh: '在...的 + 方位', ru: 'Конструкция 在...的 + направление', en: 'Construction 在...的 + direction' },
+    title: { zh: '在...的 + 方位', pinyin: 'Zài...de + fāngwèi', ru: 'Конструкция 在...的 + направление', en: 'Construction 在...的 + direction' },
     explanation: { ru: 'Полная конструкция для описания местоположения: A + 在 + B + 的 + 方位词. Указывает, где A находится относительно B.', en: 'Full construction for location description: A + 在 + B + 的 + directional word. Indicates where A is relative to B.' },
     pattern: 'A + 在 + B + 的 + direction',
     examples: [
@@ -22,7 +22,7 @@ module.exports = [
     difficulty: 'easy'
   },
   {
-    title: { zh: '从...到...', ru: 'От...до...', en: 'From...to...' },
+    title: { zh: '从...到...', pinyin: 'Cóng...dào...', ru: 'От...до...', en: 'From...to...' },
     explanation: { ru: '从 означает "от/из" (начальная точка), 到 — "до" (конечная точка). Используется для маршрутов, расстояний и временных отрезков.', en: '从 means "from" (starting point), 到 means "to" (end point). Used for routes, distances, and time periods.' },
     pattern: '从 + place A + 到 + place B + (verb/distance/time)',
     examples: [
@@ -33,7 +33,7 @@ module.exports = [
     difficulty: 'easy'
   },
   {
-    title: { zh: '离 — 距离表达', ru: 'Выражение расстояния с 离', en: 'Expressing distance with 离' },
+    title: { zh: '离 — 距离表达', pinyin: 'Lí — jùlí biǎodá', ru: 'Выражение расстояния с 离', en: 'Expressing distance with 离' },
     explanation: { ru: '离 означает "от" и используется для выражения расстояния между двумя точками. Структура: A + 离 + B + 远/近/距离.', en: '离 means "from" and is used to express distance between two points. Structure: A + 离 + B + far/near/distance.' },
     pattern: 'A + 离 + B + 远/近/很远/不远',
     examples: [

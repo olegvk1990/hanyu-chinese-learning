@@ -22,11 +22,42 @@
   gap: $space-xl;
 }
 
+.grammar-detail__top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .grammar-detail__back {
   font-size: $font-sm;
   color: var(--accent);
   font-weight: 500;
-  align-self: flex-start;
+}
+
+.grammar-detail__pinyin-toggle {
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+  padding: $space-xs $space-sm;
+  font-size: $font-sm;
+  font-weight: 500;
+  border-radius: $radius-full;
+  background: var(--bg-secondary);
+  color: var(--text-tertiary);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+
+  &--active {
+    background: var(--accent-light);
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
 }
 
 .grammar-detail__title {
@@ -34,6 +65,18 @@
   font-weight: 600;
   color: var(--text-primary);
   font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+.grammar-detail__title-pinyin {
+  @include pinyin-text;
+  font-size: $font-base;
+  margin-top: -$space-md;
+}
+
+.grammar-detail__subtitle {
+  font-size: $font-base;
+  color: var(--text-secondary);
+  margin-top: -$space-md;
 }
 
 .grammar-detail__section {

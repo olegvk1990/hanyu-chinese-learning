@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: { zh: '结果补语 好/完/干净', ru: 'Результативные комплементы 好/完/干净', en: 'Result complements 好/完/干净' },
+    title: { zh: '结果补语 好/完/干净', pinyin: 'Jiéguǒ bǔyǔ hǎo/wán/gānjìng', ru: 'Результативные комплементы 好/完/干净', en: 'Result complements 好/完/干净' },
     explanation: { ru: 'Результативные комплементы ставятся после глагола и показывают результат действия: 好 (завершено хорошо), 完 (завершено полностью), 干净 (сделано чисто).', en: 'Result complements are placed after the verb to show the outcome: 好 (done well/ready), 完 (done completely), 干净 (done clean).' },
     pattern: 'verb + 好/完/干净 + 了',
     examples: [
@@ -11,7 +11,7 @@ module.exports = [
     difficulty: 'easy'
   },
   {
-    title: { zh: '趋向补语 上/下/起来', ru: 'Направленные комплементы 上/下/起来', en: 'Directional complements 上/下/起来' },
+    title: { zh: '趋向补语 上/下/起来', pinyin: 'Qūxiàng bǔyǔ shàng/xià/qǐlái', ru: 'Направленные комплементы 上/下/起来', en: 'Directional complements 上/下/起来' },
     explanation: { ru: 'Направленные комплементы указывают направление действия: 上 (вверх, на), 下 (вниз, снять), 起来 (поднять, начать). Также имеют переносные значения.', en: 'Directional complements indicate direction: 上 (up, onto), 下 (down, off), 起来 (up, start). They also carry figurative meanings.' },
     pattern: 'verb + 上/下/起来',
     examples: [
@@ -22,7 +22,7 @@ module.exports = [
     difficulty: 'medium'
   },
   {
-    title: { zh: '可能补语 得/不', ru: 'Комплемент возможности 得/不', en: 'Potential complement 得/不' },
+    title: { zh: '可能补语 得/不', pinyin: 'Kěnéng bǔyǔ de/bù', ru: 'Комплемент возможности 得/不', en: 'Potential complement 得/不' },
     explanation: { ru: 'Между глаголом и результативным комплементом вставляется 得 (можно) или 不 (нельзя) для выражения возможности или невозможности действия.', en: 'Insert 得 (can) or 不 (cannot) between the verb and result complement to express possibility or impossibility.' },
     pattern: 'verb + 得/不 + result complement',
     examples: [
@@ -33,7 +33,7 @@ module.exports = [
     difficulty: 'hard'
   },
   {
-    title: { zh: '下来/下去 — 持续与完成', ru: '下来 и 下去 — завершение и продолжение', en: '下来 and 下去 — completion and continuation' },
+    title: { zh: '下来/下去 — 持续与完成', pinyin: 'Xiàlái/xiàqù — chíxù yǔ wánchéng', ru: '下来 и 下去 — завершение и продолжение', en: '下来 and 下去 — completion and continuation' },
     explanation: { ru: '下来 указывает на завершение или фиксацию результата (остановиться, записать). 下去 — на продолжение действия в будущем. Оба — направленные комплементы с переносным значением.', en: '下来 indicates completion or fixing a result (stop, write down). 下去 indicates continuation into the future. Both are directional complements with figurative meanings.' },
     pattern: 'verb + 下来 (fix result) | verb + 下去 (continue)',
     examples: [

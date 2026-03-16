@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { useGetLearnedWordsQuery } from '../features/progress/api/progressApi';
 import { useUpdateProgressMutation } from '../features/progress/api/progressApi';
 import { useGetCategoriesQuery } from '../features/categories/api/categoriesApi';
@@ -10,8 +11,9 @@ export default function LearnedPage() {
   const [search, setSearch] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('');
   const [expandedId, setExpandedId] = useState(null);
+  const token = useSelector((state) => state.auth.token);
 
-  const { data, isLoading, error } = useGetLearnedWordsQuery();
+  const { data, isLoading, error } = useGetLearnedWordsQuery(undefined, { skip: !token });
   const { data: categoriesData } = useGetCategoriesQuery();
   const [updateProgress] = useUpdateProgressMutation();
 
@@ -49,6 +51,17 @@ export default function LearnedPage() {
       // ignore
     }
   };
+
+  if (!token) {
+    return (
+      <div className="learned-page">
+        <div className="learned-page__empty">
+          <p>Log in to track learned words</p>
+          <Link to="/login" className="learned-page__link">Log in</Link>
+        </div>
+      </div>
+    );
+  }
 
   if (isLoading) return <Loader />;
 

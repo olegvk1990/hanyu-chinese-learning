@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: { zh: '关于/对于/按照', ru: 'Формальные предлоги 关于/对于/按照', en: 'Formal prepositions 关于/对于/按照' },
+    title: { zh: '关于/对于/按照', pinyin: 'Guānyú/Duìyú/Ànzhào', ru: 'Формальные предлоги 关于/对于/按照', en: 'Formal prepositions 关于/对于/按照' },
     explanation: { ru: '关于 — "о, относительно" (тема). 对于 — "что касается, в отношении" (объект суждения). 按照 — "согласно, в соответствии с" (основание). Все три — книжный стиль.', en: '关于 means "about, regarding" (topic). 对于 means "as for, with regard to" (object of judgment). 按照 means "according to" (basis). All three are formal.' },
     pattern: '关于/对于 + topic，sentence | 按照 + standard + verb',
     examples: [
@@ -11,7 +11,7 @@ module.exports = [
     difficulty: 'hard'
   },
   {
-    title: { zh: '百分比与数字表达', ru: 'Выражение процентов и чисел', en: 'Percentage and number expressions' },
+    title: { zh: '百分比与数字表达', pinyin: 'Bǎifēnbǐ yǔ shùzì biǎodá', ru: 'Выражение процентов и чисел', en: 'Percentage and number expressions' },
     explanation: { ru: 'Проценты: 百分之 + число (百分之五十 = 50%). Доли: 十分之一 = 1/10. Кратность: 两倍 = в два раза. Рост/падение: 增长/下降 + 了 + 百分之...', en: 'Percentages: 百分之 + number (百分之五十 = 50%). Fractions: 十分之一 = 1/10. Multiples: 两倍 = twice. Growth/decline: 增长/下降 + 了 + 百分之...' },
     pattern: '百分之 + number | number + 倍 | verb + 了 + 百分之...',
     examples: [
@@ -22,7 +22,7 @@ module.exports = [
     difficulty: 'medium'
   },
   {
-    title: { zh: '由于/因此/所以', ru: 'Причинно-следственные связки', en: 'Cause-and-effect connectors' },
+    title: { zh: '由于/因此/所以', pinyin: 'Yóuyú/Yīncǐ/Suǒyǐ', ru: 'Причинно-следственные связки', en: 'Cause-and-effect connectors' },
     explanation: { ru: '由于 — "из-за, ввиду" (книжная причина). 因此/所以 — "поэтому" (следствие). 由于...所以... — полная конструкция причинно-следственной связи.', en: '由于 means "due to, owing to" (formal cause). 因此/所以 means "therefore" (result). 由于...所以... is the full cause-effect construction.' },
     pattern: '由于 + cause，因此/所以 + result',
     examples: [
@@ -33,7 +33,7 @@ module.exports = [
     difficulty: 'hard'
   },
   {
-    title: { zh: '不但...而且...', ru: 'Не только...но и...', en: 'Not only...but also...' },
+    title: { zh: '不但...而且...', pinyin: 'Búdàn...érqiě...', ru: 'Не только...но и...', en: 'Not only...but also...' },
     explanation: { ru: 'Конструкция 不但...而且... выражает нарастание: "не только...но и...". В деловом контексте используется для перечисления преимуществ или проблем.', en: 'The 不但...而且... construction expresses escalation: "not only...but also...". In business context, used to list advantages or problems.' },
     pattern: '不但 + clause1，而且 + clause2',
     examples: [

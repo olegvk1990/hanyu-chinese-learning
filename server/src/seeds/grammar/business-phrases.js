@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: { zh: '如果...就...', ru: 'Условная конструкция 如果...就...', en: 'Conditional: 如果...就...' },
+    title: { zh: '如果...就...', pinyin: 'Rúguǒ...jiù...', ru: 'Условная конструкция 如果...就...', en: 'Conditional: 如果...就...' },
     explanation: { ru: '如果 означает "если", 就 — "тогда". Используется для условных предложений. В деловой речи часто применяется для обсуждения условий сделки.', en: '如果 means "if", 就 means "then". Used for conditional sentences. In business, often used to discuss deal conditions.' },
     pattern: '如果 + condition，(subject) + 就 + result',
     examples: [
@@ -11,7 +11,7 @@ module.exports = [
     difficulty: 'medium'
   },
   {
-    title: { zh: '谈判用语', ru: 'Фразы для переговоров', en: 'Negotiation phrases' },
+    title: { zh: '谈判用语', pinyin: 'Tánpàn yòngyǔ', ru: 'Фразы для переговоров', en: 'Negotiation phrases' },
     explanation: { ru: 'В китайских деловых переговорах важны вежливые формулировки: 能不能 (можно ли), 是否可以 (возможно ли), 希望 (надеемся), 考虑一下 (обдумать).', en: 'In Chinese business negotiations, polite expressions are important: 能不能 (can we), 是否可以 (is it possible), 希望 (we hope), 考虑一下 (to consider).' },
     pattern: '能不能/是否可以 + verb | 希望 + clause',
     examples: [
@@ -22,7 +22,7 @@ module.exports = [
     difficulty: 'hard'
   },
   {
-    title: { zh: '礼貌请求', ru: 'Вежливые просьбы', en: 'Polite requests' },
+    title: { zh: '礼貌请求', pinyin: 'Lǐmào qǐngqiú', ru: 'Вежливые просьбы', en: 'Polite requests' },
     explanation: { ru: 'Вежливые формы просьбы в бизнес-контексте: 麻烦您 (не затруднит ли вас), 请问 (позвольте спросить), 能否 (возможно ли), 劳驾 (будьте добры).', en: 'Polite request forms in business: 麻烦您 (may I trouble you), 请问 (may I ask), 能否 (would it be possible), 劳驾 (would you be so kind).' },
     pattern: '麻烦您 + verb | 请问 + question | 能否 + verb',
     examples: [
@@ -33,7 +33,7 @@ module.exports = [
     difficulty: 'medium'
   },
   {
-    title: { zh: '只要...就...', ru: 'Достаточное условие: 只要...就...', en: 'Sufficient condition: 只要...就...' },
+    title: { zh: '只要...就...', pinyin: 'Zhǐyào...jiù...', ru: 'Достаточное условие: 只要...就...', en: 'Sufficient condition: 只要...就...' },
     explanation: { ru: '只要 означает "достаточно лишь, лишь бы". Конструкция 只要...就... выражает достаточное условие: "если только..., то..." — более мягкое, чем 如果.', en: '只要 means "as long as". The 只要...就... construction expresses a sufficient condition: "as long as..., then..." — softer than 如果.' },
     pattern: '只要 + condition，就 + result',
     examples: [

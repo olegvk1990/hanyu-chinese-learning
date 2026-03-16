@@ -16,6 +16,11 @@
   gap: $space-lg;
 }
 
+.grammar-page__toolbar {
+  @include flex-column;
+  gap: $space-sm;
+}
+
 .grammar-page__tabs {
   display: flex;
   gap: $space-xs;
@@ -47,6 +52,33 @@
   }
 }
 
+.grammar-page__pinyin-toggle {
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  gap: $space-xs;
+  padding: $space-xs $space-sm;
+  font-size: $font-sm;
+  font-weight: 500;
+  border-radius: $radius-full;
+  background: var(--bg-secondary);
+  color: var(--text-tertiary);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+
+  &--active {
+    background: var(--accent-light);
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
 .grammar-page__list {
   @include flex-column;
   gap: $space-md;
@@ -69,10 +101,27 @@
 }
 
 .grammar-page__title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.grammar-page__title-zh {
   font-size: $font-lg;
   font-weight: 600;
   color: var(--text-primary);
-  flex: 1;
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+}
+
+.grammar-page__title-pinyin {
+  @include pinyin-text;
+  font-size: $font-xs;
+}
+
+.grammar-page__title-ru {
+  font-size: $font-sm;
+  color: var(--text-secondary);
 }
 
 .grammar-page__expand-icon {
@@ -104,18 +153,37 @@
 
 .grammar-page__examples {
   @include flex-column;
-  gap: $space-xs;
+  gap: $space-sm;
 
-  strong {
+  > strong {
     font-size: $font-sm;
     color: var(--text-secondary);
   }
 }
 
 .grammar-page__example {
-  font-size: $font-sm;
-  color: var(--text-primary);
+  @include flex-column;
+  gap: 2px;
+  padding: $space-sm;
+  background: var(--bg-secondary);
+  border-radius: $radius-sm;
+}
+
+.grammar-page__example-zh {
+  font-size: $font-base;
+  font-weight: 500;
   font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  color: var(--text-primary);
+}
+
+.grammar-page__example-pinyin {
+  @include pinyin-text;
+  font-size: $font-xs;
+}
+
+.grammar-page__example-translation {
+  font-size: $font-sm;
+  color: var(--text-secondary);
 }
 
 .grammar-page__detail-link {

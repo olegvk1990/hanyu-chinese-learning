@@ -11,9 +11,10 @@ export default function ProgressPage() {
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme.theme);
   const user = useSelector((state) => state.auth.user);
+  const token = useSelector((state) => state.auth.token);
 
-  const { data: statsData, isLoading: statsLoading } = useGetStatsQuery();
-  const { data: reviewData, isLoading: reviewLoading } = useGetReviewCardsQuery();
+  const { data: statsData, isLoading: statsLoading } = useGetStatsQuery(undefined, { skip: !token });
+  const { data: reviewData, isLoading: reviewLoading } = useGetReviewCardsQuery(undefined, { skip: !token });
 
   const stats = statsData?.data ?? {};
   const reviewCards = reviewData?.data ?? [];
@@ -50,6 +51,27 @@ export default function ProgressPage() {
     .join(', ');
 
   if (statsLoading) return <Loader />;
+
+  if (!token) {
+    return (
+      <div className="progress-page">
+        <div className="progress-page__container">
+          <section className="progress-page__settings">
+            <h3>Settings</h3>
+            <div className="progress-page__setting-row">
+              <span>Theme</span>
+              <button type="button" className="progress-page__theme-btn" onClick={() => dispatch(toggleTheme())}>
+                {theme === 'dark' ? '☀️ Light' : '🌙 Dark'}
+              </button>
+            </div>
+          </section>
+          <p style={{ textAlign: 'center', marginTop: '2rem' }}>
+            <Link to="/login" style={{ color: 'var(--accent)' }}>Log in</Link> to track your progress
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="progress-page">
