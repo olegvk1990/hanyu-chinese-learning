@@ -10,17 +10,14 @@ router.get(
   '/study/:categorySlug',
   asyncHandler(async (req, res) => {
     const { categorySlug } = req.params;
-    const { limit = 20, difficulty } = req.query;
+    const { difficulty } = req.query;
     const category = await Category.findOne({ slug: categorySlug });
     if (!category) {
       return res.status(404).json({ success: false, error: { message: 'Category not found', code: 'NOT_FOUND' } });
     }
     const query = { category: category._id };
     if (difficulty) query.difficulty = difficulty;
-    const words = await Word.aggregate([
-      { $match: query },
-      { $sample: { size: Math.min(parseInt(limit, 10) || 20, 100) } }
-    ]);
+    const words = await Word.find(query).sort({ difficulty: 1, chinese: 1 });
     return success(res, words);
   })
 );

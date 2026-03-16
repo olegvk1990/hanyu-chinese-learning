@@ -156,7 +156,8 @@ export default function StudyPage() {
   const saveTimerRef = useRef(null);
 
   const allWords = data?.data ?? [];
-  const words = studySelected && selectedIds.size > 0
+  const useSelected = selectedIds.size > 0 && (studySelected || viewMode === 'cards');
+  const words = useSelected
     ? allWords.filter((w) => selectedIds.has(w._id ?? w.id))
     : allWords;
   const total = words.length;
@@ -301,12 +302,31 @@ export default function StudyPage() {
     );
   }
 
-  if (total === 0 && !studySelected) {
+  if (allWords.length === 0) {
     return (
       <div className="study-page">
         <div className="study-page__empty">
           <p>Нет карточек в этой категории</p>
           <Link to="/">← Назад</Link>
+        </div>
+      </div>
+    );
+  }
+
+  if (total === 0 && viewMode === 'cards') {
+    return (
+      <div className="study-page">
+        <div className="study-page__empty">
+          <h2 style={{ marginBottom: '0.5rem' }}>Нет выбранных слов</h2>
+          <p>Выберите слова в режиме таблицы или сбросьте выбор</p>
+          <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1rem' }}>
+            <button type="button" className="study-page__btn" onClick={() => { setViewMode('table'); setSelectionMode(true); }}>
+              Выбрать слова
+            </button>
+            <button type="button" className="study-page__btn study-page__btn--outline" onClick={() => { setSelectedIds(new Set()); setStudySelected(false); }}>
+              Показать все
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -366,7 +386,7 @@ export default function StudyPage() {
         <div className="study-page__controls">
           {viewMode === 'cards' && (
             <p className="study-page__counter">
-              {studySelected && <span className="study-page__badge">Выбранные</span>}
+              {useSelected && <span className="study-page__badge">Выбрано: {selectedIds.size}</span>}
               {displayIndex} / {total}
             </p>
           )}
@@ -374,7 +394,7 @@ export default function StudyPage() {
             <p className="study-page__counter">Всего: {allWords.length} · Выучено: {learnedCount}{selectedIds.size > 0 && ` · Выбрано: ${selectedIds.size}`}</p>
           )}
           <div className="study-page__toggles">
-            <button type="button" className={`study-page__mode-toggle ${viewMode === 'cards' ? 'study-page__mode-toggle--active' : ''}`} onClick={() => setViewMode('cards')} aria-label="Карточки">
+            <button type="button" className={`study-page__mode-toggle ${viewMode === 'cards' ? 'study-page__mode-toggle--active' : ''}`} onClick={() => { setViewMode('cards'); setCurrentIndex(0); }} aria-label="Карточки">
               {ICONS.cards}
             </button>
             <button type="button" className={`study-page__mode-toggle ${viewMode === 'table' ? 'study-page__mode-toggle--active' : ''}`} onClick={() => { setViewMode('table'); setStudySelected(false); }} aria-label="Таблица">
